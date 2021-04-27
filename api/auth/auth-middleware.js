@@ -5,7 +5,14 @@ const { JWT_SECRET } = require('../secrets');
 
 const registerPayload = async (req, res, next) => {
   const { username, password, email } = req.body;
-  if (!username || !password || !email) {
+  if (
+    !username ||
+    !username.trim() ||
+    !password ||
+    !password.trim() ||
+    !email ||
+    !email.trim()
+  ) {
     return res.status(401).json({ message: 'Username, email, & password required.' });
   }
   const userCheck = await db('users').where('username', username).first();
@@ -57,8 +64,9 @@ const loginValidation = async (req, res, next) => {
 
 const buildToken = (user) => {
   const payload = {
-    subject: user.id,
+    subject: user.user_id,
     username: user.username,
+    user_id: user.user_id
   };
   const config = {
     expiresIn: '1d',
@@ -87,5 +95,5 @@ module.exports = {
   loginPayload,
   checkUsernameExists,
   loginValidation,
-  restricted
-  };
+  restricted,
+};
