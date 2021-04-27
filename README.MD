@@ -1,4 +1,5 @@
 //[POST] REGISTER (/api/auth/register)
+
 //receive
 {
 username,
@@ -13,6 +14,7 @@ return {
 }
 
 // [POST] LOGIN (/api/auth/login)
+
 //receive
 {
 username,
