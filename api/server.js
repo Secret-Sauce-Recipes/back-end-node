@@ -4,6 +4,7 @@ const helmet = require('helmet');
 
 const authRouter = require('./auth/auth-router');
 const recipeRouter = require('./recipes/recipes-router');
+const { restricted } = require('./auth/auth-middleware');
 
 const server = express();
 
@@ -17,7 +18,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 server.use('/api/auth', authRouter);
-server.use('/api/recipes', recipeRouter);
+server.use('/api/recipes', restricted, recipeRouter);
 
 server.use('/', (req, res) => {
   res.json({ api: 'up' });

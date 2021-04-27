@@ -23,7 +23,13 @@ router.post('/register', registerPayload, async (req, res, next) => {
 });
 
 router.post('/login', loginPayload, checkUsernameExists, loginValidation, (req, res) => {
-  res.json({ message: '/loginauth' });
+  const { user, token } = req;
+  res.json({
+    message: `Welcome, ${user.username}!`,
+    user_id: user.user_id,
+    username: user.username,
+    token,
+  });
 });
 
 module.exports = router;
