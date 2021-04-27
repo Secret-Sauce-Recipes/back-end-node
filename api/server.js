@@ -11,10 +11,15 @@ server.use(helmet());
 server.use(cors());
 server.use(express.json());
 
+if (process.env.NODE_ENV === 'development') {
+  const morgan = require('morgan');
+  server.use(morgan('dev'));
+}
+
 server.use('/api/auth', authRouter);
 server.use('/api/recipes', recipeRouter);
 
-server.use('*', (req, res) => {
+server.use('/', (req, res) => {
   res.json({ api: 'up' });
 });
 
