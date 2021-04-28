@@ -18,7 +18,6 @@ router.post(
   registerPayloadDuplicate,
   async (req, res, next) => {
     try {
-      console.log(typeof BCRYPT_ROUNDS);
       let user = req.body;
       const hash = bcrypt.hashSync(user.password, BCRYPT_ROUNDS);
       user.password = hash;
