@@ -57,6 +57,7 @@ return
 ]
 
 [GET] Recipe by ID *restricted* (api/recipes/recipeId)
+
  {
    recipe_id,
    user_id,
