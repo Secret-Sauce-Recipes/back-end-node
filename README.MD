@@ -1,10 +1,10 @@
-//[POST] REGISTER (/api/auth/register)
+[POST] REGISTER (/api/auth/register)
 
-//receive
+  receive
 {
-username,
-password,
-email
+  username,
+  password,
+  email
 }
 
 return {
@@ -13,17 +13,17 @@ return {
   email
 }
 
-// [POST] LOGIN (/api/auth/login)
+[POST] LOGIN (/api/auth/login)
 
-//receive
+  receive
 {
-username,
-password
+  username,
+  password
 }
 
 return {
-"message",
-"user_id",
-"username",
-"token":
+  message,
+  user_id,
+  username,
+  token:
 }

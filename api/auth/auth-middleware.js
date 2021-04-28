@@ -2,12 +2,10 @@ const db = require('../data/dbConfig');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { JWT_SECRET } = require('../secrets');
+const { check, validationResult } = require('express-validator');
 
-const registerPayload = async (req, res, next) => {
-  const { username, password, email } = req.body;
-  if (!username || !password || !email) {
-    return res.status(401).json({ message: 'Username, email, & password required.' });
-  }
+const registerPayloadDuplicate = async (req, res, next) => {
+  const { username, email } = req.body;
   const userCheck = await db('users').where('username', username).first();
   const emailCheck = await db('users').where('email', email).first();
   if (!userCheck && !emailCheck) {
@@ -16,6 +14,32 @@ const registerPayload = async (req, res, next) => {
     return res.status(401).json({ message: 'username taken' });
   } else {
     return res.status(401).json({ message: 'email taken' });
+  }
+};
+
+const registerSchema = [
+  check('username', 'Username must be at least 6 characters')
+    .isLength({ min: 6 })
+    .trim()
+    .escape(),
+  check('password')
+    .matches(
+      /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/
+    )
+    .withMessage(
+      'Password must contain at least 8 characters, one uppercase, one number and one special case character'
+    )
+    .trim()
+    .escape(),
+  check('email', 'Invalid Email').isEmail().trim().escape(),
+];
+
+const registerValidate = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(401).json({ message: errors.array() });
+  } else {
+    next();
   }
 };
 
@@ -57,8 +81,9 @@ const loginValidation = async (req, res, next) => {
 
 const buildToken = (user) => {
   const payload = {
-    subject: user.id,
+    subject: user.user_id,
     username: user.username,
+    user_id: user.user_id,
   };
   const config = {
     expiresIn: '1d',
@@ -83,9 +108,11 @@ const restricted = (req, res, next) => {
 };
 
 module.exports = {
-  registerPayload,
+  registerSchema,
+  registerValidate,
+  registerPayloadDuplicate,
   loginPayload,
   checkUsernameExists,
   loginValidation,
-  restricted
-  };
+  restricted,
+};
