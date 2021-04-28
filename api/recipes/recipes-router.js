@@ -11,9 +11,15 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.get('/:recipeId', (req, res, next) => {
-  console.log();
-  res.json({ message: 'Get by Recipe by ID Endpoint' });
+router.get('/:recipeId', async (req, res, next) => {
+  const decodedUserId = req.decodedJwt.user_id;
+  const recipeId = parseInt(req.params.recipeId);
+  try {
+    const recipe = await Recipes.findRecipeById(decodedUserId, recipeId);
+    res.json(recipe);
+  } catch (err) {
+    next();
+  }
 });
 
 router.post('/', (req, res, next) => {

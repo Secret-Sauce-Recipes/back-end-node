@@ -2,7 +2,7 @@ exports.seed = async function (knex) {
   await knex('users').insert([
     {
       username: 'Guy',
-      password: '$2a$10$dFwWjD8hi8K2I9/Y65MWi.WU0qn9eAVaiBoRSShTvuJVGw8XpsCiq', // password "1234"
+      password: '$2a$10$dFwWjD8hi8K2I9/Y65MWi.WU0qn9eAVaiBoRSShTvuJVGw8XpsCiq', // password "Test123."
       email: 'guy@email.com',
     },
   ]);
@@ -17,6 +17,17 @@ exports.seed = async function (knex) {
         '1 Large Egg, 1 teaspoon salt, 1 teaspoon pepper, 1 tablespoon butter, 1 teaspoon truffle oil',
       instructions:
         '1. Heat pan and apply butter, 2. Pour egg mixture in pan over melted butter, 3. Cook until desired consistency, 4. Serve with truffle oil',
+    },
+    {
+      user_id: 1,
+      recipe_img:
+        'https://www.tasteofhome.com/wp-content/uploads/2019/02/Cast-Iron-Skillet-Steak_EXPS_CIMZ19_235746_B01_15_10b-2.jpg',
+      source: 'Gordon Ramsey',
+      category: 'Steak',
+      ingredients:
+        '1 rib-eye steak, 1 tablespoon butter, 1 tablespoon oil, 1 teaspoon salt, 1 teaspoon pepper',
+      instructions:
+        '1. Heat on high heat pan and apply oil, 2. Sear rib-eye on both sides for 45 seconds, 3. Keep flipping until medium rare, 4. Let rest and serve.',
     },
   ]);
 };
