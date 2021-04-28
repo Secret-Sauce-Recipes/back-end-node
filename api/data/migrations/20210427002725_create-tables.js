@@ -17,7 +17,7 @@ exports.up = async (knex) => {
         .inTable('users')
         .onDelete('RESTRICT')
         .onUpdate('RESTRICT');
-      tbl.string('recipe_name', 200).notNullable();
+      tbl.string('recipe_name', 200).notNullable().unique()
       tbl.string('recipe_img');
       tbl.string('source').notNullable();
       tbl.string('category');

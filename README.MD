@@ -56,7 +56,7 @@ return
     }
 ]
 
-[GET] Recipe by ID *restricted* (api/recipes/recipeId)
+[GET] Recipe by ID *restricted* (api/recipes/:recipeId)
 return
  {
    recipe_id,
@@ -69,3 +69,60 @@ return
    created_at,
    updated_at
  }
+
+[POST] Recipe *restricted* (/api/recipes)
+
+receive 
+{
+    "recipe_name"
+    "recipe_img"
+    "source":
+    "category": 
+    "ingredients": 
+    "instructions": 
+}
+
+returns
+{
+    "recipe_id":
+    "recipe_name":
+    "recipe_img": 
+    "source": 
+    "category": 
+    "ingredients": 
+    "instructions": 
+    "created_at": 
+}
+
+[PUT] Recipe *restricted* (/api/recipes/:recipeId)
+receive 
+
+{
+    "recipe_name":
+    "recipe_img":
+    "source":
+    "category": 
+    "ingredients": 
+    "instructions": 
+}
+
+returns
+{
+    "recipe_name":
+    "recipe_id":
+    "recipe_img": 
+    "source": 
+    "category": 
+    "ingredients": 
+    "instructions": 
+    "updated_at": 
+}
+
+
+[DELETE] Recipe *restricted* (/api/recipes/:recipeId)
+
+returns
+{
+  "recipe_name"
+  "recipe_id"
+}

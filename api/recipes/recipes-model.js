@@ -13,21 +13,46 @@ const findById = async (user_id, recipe_id) => {
   return recipe;
 };
 
-const add = async (newRecipe) => {
-  const something = await db('recipes').insert(newRecipe);
-  return something
-}
+const add = async (contents) => {
+  const [newRecipe] = await db('recipes').insert(contents, [
+    'recipe_id',
+    'recipe_name',
+    'recipe_img',
+    'source',
+    'category',
+    'ingredients',
+    'instructions',
+    'created_at',
+  ]);
+  return newRecipe;
+};
 
-const edit = async (user_id, recipe_id) => {
+const edit = async (recipe_id, contents) => {
+  const [updatedRecipe] = await db('recipes')
+    .where('recipe_id', recipe_id)
+    .update(contents, [
+      'recipe_id',
+      'recipe_name',
+      'recipe_img',
+      'source',
+      'category',
+      'ingredients',
+      'instructions',
+      'created_at',
+    ]);
+  return updatedRecipe;
+};
+const remove = async (recipe_id) => {
+  const toBeDeleted = await db('recipes')
+    .where('recipe_id', recipe_id)
+    .del(['recipe_id', 'recipe_name']);
 
-}
-const remove = async (user_id, recipe_id) => {
-
-}
+    return toBeDeleted
+};
 module.exports = {
   findAll,
   findById,
   add,
   edit,
-  remove
+  remove,
 };
