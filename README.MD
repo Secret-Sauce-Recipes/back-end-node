@@ -7,7 +7,8 @@
   email
 }   
 
-return {
+return   
+{   
   user_id,  
   username,  
   email   
