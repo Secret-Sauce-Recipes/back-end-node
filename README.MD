@@ -4,7 +4,7 @@
 {  
   username,  
   password,  
-  email. 
+  email
 }   
 
 return {
@@ -61,61 +61,61 @@ return
 [GET] Recipe by ID *restricted* (api/recipes/:recipeId)   
 return
  {
-   recipe_id,
-   user_id,
-   recipe_img,
-   source,
-   category,
-   ingredients,
-   instructions,
-   created_at,
-   updated_at
+   recipe_id,  
+   user_id,  
+   recipe_img,  
+   source,  
+   category,  
+   ingredients,  
+   instructions,  
+   created_at,  
+   updated_at   
  }
 
 [POST] Recipe *restricted* (/api/recipes)
 
 receive 
 {
-    "recipe_name"
-    "recipe_img"
-    "source":
-    "category": 
-    "ingredients": 
-    "instructions": 
+    "recipe_name"  
+    "recipe_img"  
+    "source":  
+    "category":   
+    "ingredients":   
+    "instructions":  
 }
 
 returns
 {
-    "recipe_id":
-    "recipe_name":
-    "recipe_img": 
-    "source": 
-    "category": 
-    "ingredients": 
-    "instructions": 
-    "created_at": 
+    "recipe_id":  
+    "recipe_name":  
+    "recipe_img":   
+    "source":  
+    "category":   
+    "ingredients":   
+    "instructions":  
+    "created_at":  
 }
 
 [PUT] Recipe *restricted* (/api/recipes/:recipeId)
 receive 
 
 {
-    "recipe_name":
-    "recipe_img":
-    "source":
-    "category": 
-    "ingredients": 
-    "instructions": 
+    "recipe_name":  
+    "recipe_img":  
+    "source":  
+    "category":   
+    "ingredients":   
+    "instructions":  
 }
 
 returns
 {
-    "recipe_name":
-    "recipe_id":
-    "recipe_img": 
-    "source": 
-    "category": 
-    "ingredients": 
+    "recipe_name":  
+    "recipe_id":  
+    "recipe_img":   
+    "source":  
+    "category":   
+    "ingredients":   
     "instructions": 
     "updated_at": 
 }
@@ -125,6 +125,6 @@ returns
 
 returns
 {
-  "recipe_name"
-  "recipe_id"
+  "recipe_name"    
+  "recipe_id"   
 }
