@@ -1,34 +1,34 @@
-[POST] REGISTER (/api/auth/register)
+[POST] REGISTER (/api/auth/register). 
 
-  receive
-{
-  username,
-  password,
-  email
-}
-
-return {
-  user_id,
-  username,
-  email
-}
-
-[POST] LOGIN (/api/auth/login)
-
-  receive
-{
-  username,
-  password
-}
+  receive. 
+{  
+  username,  
+  password,  
+  email. 
+}   
 
 return {
-  message,
-  user_id,
-  username,
-  token:
+  user_id,  
+  username,  
+  email   
 }
 
-[GET] All Recipes *restricted* (/api/recipes)
+[POST] LOGIN (/api/auth/login). 
+
+  receive  
+{
+  username,  
+  password  
+}
+
+return {  
+  message,  
+  user_id,  
+  username,  
+  token:  
+}   
+
+[GET] All Recipes *restricted* (/api/recipes). 
 
 return   
 *
@@ -55,10 +55,10 @@ return
        created_at,
        updated_at
     }
-]
+]   
 *
   
-[GET] Recipe by ID *restricted* (api/recipes/:recipeId)
+[GET] Recipe by ID *restricted* (api/recipes/:recipeId)   
 return
  {
    recipe_id,
