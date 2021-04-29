@@ -31,6 +31,7 @@ return {
 [GET] All Recipes *restricted* (/api/recipes)
 
 return 
+*
 [
     {
        recipe_id,
@@ -55,6 +56,7 @@ return
        updated_at
     }
 ]
+*
 
 [GET] Recipe by ID *restricted* (api/recipes/:recipeId)
 return
