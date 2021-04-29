@@ -1,14 +1,15 @@
 [POST] REGISTER (/api/auth/register). 
 ---------------------
 
-  receive     
+*receives*    
+  
 {  
   username,  
   password,  
   email  
 }   
 
-return   
+*returns*    
 {   
   user_id,  
   username,  
@@ -18,13 +19,14 @@ return
 [POST] LOGIN (/api/auth/login). 
 ---------------------
 
-  receive  
+*receives*  
+
 {  
   username,  
   password  
 }
 
-return   
+*returns*    
   
 {  
   message,  
@@ -36,7 +38,7 @@ return
 [GET] All Recipes *restricted* (/api/recipes). 
 ---------------------
 
-return   
+*returns*    
 
 [
     {  
@@ -67,7 +69,7 @@ return
 [GET] Recipe by ID *restricted* (api/recipes/:recipeId)   
 ---------------------
 
-return  
+*returns*    
  {  
    recipe_id,  
    user_id,  
@@ -83,7 +85,8 @@ return
 [POST] Recipe *restricted* (/api/recipes)
 ---------------------
 
-receive  
+*receives*  
+ 
 {  
     "recipe_name"  
     "recipe_img"  
@@ -93,7 +96,7 @@ receive
     "instructions":  
 }
 
-returns  
+*returns*    
 {  
     "recipe_id":  
     "recipe_name":  
@@ -108,7 +111,7 @@ returns
 [PUT] Recipe *restricted* (/api/recipes/:recipeId)
 ---------------------
 
-receive 
+*receives*  
 
 {  
     "recipe_name":  
@@ -119,7 +122,7 @@ receive
     "instructions":  
 }
 
-returns
+*returns*    
 {  
    "recipe_name":  
     "recipe_id":  
@@ -135,7 +138,7 @@ returns
 [DELETE] Recipe *restricted* (/api/recipes/:recipeId)
 ---------------------
 
-returns
+*returns*    
 {  
   "recipe_name"       
   "recipe_id"     
