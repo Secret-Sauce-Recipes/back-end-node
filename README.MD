@@ -34,15 +34,15 @@ return
 *
 [
     {
-       recipe_id,
-       user_id,
-       recipe_img,
-       source,
-       category,
-       ingredients,
-       instructions,
-       created_at,
-       updated_at
+         recipe_id,
+         user_id,
+         recipe_img,
+         source,
+         category,
+         ingredients,
+         instructions,
+         created_at,
+         updated_at
     },
     {
        recipe_id,
