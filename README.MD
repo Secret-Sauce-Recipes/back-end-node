@@ -4,7 +4,7 @@
 {  
   username,  
   password,  
-  email
+  email  
 }   
 
 return   
@@ -17,7 +17,7 @@ return
 [POST] LOGIN (/api/auth/login). 
 
   receive  
-{
+{  
   username,  
   password  
 }
@@ -36,7 +36,7 @@ return
 return   
 *
 [
-    {
+    {  
        recipe_id,  
        user_id,  
        recipe_img,  
@@ -45,25 +45,25 @@ return
        ingredients,  
        instructions,  
        created_at,  
-       updated_at. 
-    },
-    {
-       recipe_id,
-       user_id,
-       recipe_img,
-       source,
-       category,
-       ingredients,
-       instructions,
-       created_at,
-       updated_at
-    }
+       updated_at   
+    },  
+    {  
+       recipe_id,  
+       user_id,  
+       recipe_img,  
+       source,  
+       category,  
+       ingredients,  
+       instructions,  
+       created_at,  
+       updated_at  
+    }  
 ]   
 *
   
 [GET] Recipe by ID *restricted* (api/recipes/:recipeId)   
 return  
- {
+ {  
    recipe_id,  
    user_id,  
    recipe_img,  
@@ -78,7 +78,7 @@ return
 [POST] Recipe *restricted* (/api/recipes)
 
 receive  
-{
+{  
     "recipe_name"  
     "recipe_img"  
     "source":  
@@ -88,7 +88,7 @@ receive
 }
 
 returns  
-{
+{  
     "recipe_id":  
     "recipe_name":  
     "recipe_img":   
@@ -102,7 +102,7 @@ returns
 [PUT] Recipe *restricted* (/api/recipes/:recipeId)
 receive 
 
-{
+{  
     "recipe_name":  
     "recipe_img":  
     "source":  
@@ -112,22 +112,22 @@ receive
 }
 
 returns
-{
-    "recipe_name":  
+{  
+   "recipe_name":  
     "recipe_id":  
     "recipe_img":   
     "source":  
     "category":   
     "ingredients":   
-    "instructions": 
-    "updated_at": 
+    "instructions":   
+    "updated_at":   
 }
 
 
 [DELETE] Recipe *restricted* (/api/recipes/:recipeId)
 
 returns
-{
-  "recipe_name"    
-  "recipe_id"   
+{  
+  "recipe_name"       
+  "recipe_id"     
 }
