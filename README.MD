@@ -1,6 +1,6 @@
 [POST] REGISTER (/api/auth/register). 
 
-  receive. 
+  receive     
 {  
   username,  
   password,  
