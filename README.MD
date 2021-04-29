@@ -16,6 +16,7 @@ return
 }
 
 [POST] LOGIN (/api/auth/login). 
+---------------------
 
   receive  
 {  
@@ -33,6 +34,7 @@ return
 }   
 
 [GET] All Recipes *restricted* (/api/recipes). 
+---------------------
 
 return   
 
@@ -63,6 +65,8 @@ return
 
   
 [GET] Recipe by ID *restricted* (api/recipes/:recipeId)   
+---------------------
+
 return  
  {  
    recipe_id,  
@@ -77,6 +81,7 @@ return
  }
 
 [POST] Recipe *restricted* (/api/recipes)
+---------------------
 
 receive  
 {  
@@ -101,6 +106,8 @@ returns
 }
 
 [PUT] Recipe *restricted* (/api/recipes/:recipeId)
+---------------------
+
 receive 
 
 {  
@@ -126,6 +133,7 @@ returns
 
 
 [DELETE] Recipe *restricted* (/api/recipes/:recipeId)
+---------------------
 
 returns
 {  
