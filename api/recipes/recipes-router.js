@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Recipes = require('./recipes-model');
+const { uniqueUserPermissions } = require('./recipes-middleware');
 
 router.get('/', async (req, res, next) => {
   const decodedUserId = req.decodedJwt.user_id;
@@ -37,7 +38,7 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.put('/:recipeId', async (req, res, next) => {
+router.put('/:recipeId', uniqueUserPermissions, async (req, res, next) => {
   const recipe_id = parseInt(req.params.recipeId);
   const contents = req.body;
   try {
@@ -48,7 +49,7 @@ router.put('/:recipeId', async (req, res, next) => {
   }
 });
 
-router.delete('/:recipeId', async (req, res, next) => {
+router.delete('/:recipeId', uniqueUserPermissions, async (req, res, next) => {
   const recipe_id = parseInt(req.params.recipeId);
   try {
     const deletedRecipe = await Recipes.remove(recipe_id);
