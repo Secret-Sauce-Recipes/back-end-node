@@ -22,7 +22,9 @@ return
   password  
 }
 
-return {  
+return   
+  
+{  
   message,  
   user_id,  
   username,  
@@ -60,7 +62,7 @@ return
 *
   
 [GET] Recipe by ID *restricted* (api/recipes/:recipeId)   
-return
+return  
  {
    recipe_id,  
    user_id,  
@@ -75,7 +77,7 @@ return
 
 [POST] Recipe *restricted* (/api/recipes)
 
-receive 
+receive  
 {
     "recipe_name"  
     "recipe_img"  
@@ -85,7 +87,7 @@ receive
     "instructions":  
 }
 
-returns
+returns  
 {
     "recipe_id":  
     "recipe_name":  
