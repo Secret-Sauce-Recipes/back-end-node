@@ -30,7 +30,7 @@ return {
 
 [GET] All Recipes *restricted* (/api/recipes)
 
-return 
+return   
 *
 [
     {
@@ -57,7 +57,7 @@ return
     }
 ]
 *
-
+  
 [GET] Recipe by ID *restricted* (api/recipes/:recipeId)
 return
  {
