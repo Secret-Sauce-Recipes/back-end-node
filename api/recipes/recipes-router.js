@@ -1,6 +1,11 @@
 const router = require('express').Router();
 const Recipes = require('./recipes-model');
-const { uniqueUserPermissions } = require('./recipes-middleware');
+const {
+  uniqueUserPermissions,
+  uploadFile,
+  fileFormatting,
+  uniqueRecipeName,
+} = require('./recipes-middleware');
 
 router.get('/', async (req, res, next) => {
   const decodedUserId = req.decodedJwt.user_id;
@@ -23,8 +28,9 @@ router.get('/:recipeId', async (req, res, next) => {
   }
 });
 
-router.post('/', async (req, res, next) => {
+router.post('/', uploadFile, uniqueRecipeName, fileFormatting, async (req, res, next) => {
   const decodedUserId = req.decodedJwt.user_id;
+  console.log(req.file);
   let contents = req.body;
   contents = {
     ...contents,
@@ -38,16 +44,23 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.put('/:recipeId', uniqueUserPermissions, async (req, res, next) => {
-  const recipe_id = parseInt(req.params.recipeId);
-  const contents = req.body;
-  try {
-    const editedRecipe = await Recipes.edit(recipe_id, contents);
-    res.json(editedRecipe);
-  } catch (err) {
-    next(err);
+router.put(
+  '/:recipeId',
+  uniqueUserPermissions,
+  uniqueRecipeName,
+  uploadFile,
+  fileFormatting,
+  async (req, res, next) => {
+    const recipe_id = parseInt(req.params.recipeId);
+    const contents = req.body;
+    try {
+      const editedRecipe = await Recipes.edit(recipe_id, contents);
+      res.json(editedRecipe);
+    } catch (err) {
+      next(err);
+    }
   }
-});
+);
 
 router.delete('/:recipeId', uniqueUserPermissions, async (req, res, next) => {
   const recipe_id = parseInt(req.params.recipeId);
